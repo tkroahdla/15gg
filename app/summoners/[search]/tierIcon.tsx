@@ -11,7 +11,7 @@ function TierIcon(props: ITierIconProps) {
     return (
         <>
             {props?.tier &&
-                <div className="w-12 h-12 relative">
+                <div className="w-20 h-20 relative">
                     <Image
                         alt="tierIcon"
                         src={`/images/tier/${props.tier}.png`}

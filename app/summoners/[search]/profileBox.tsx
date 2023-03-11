@@ -14,16 +14,14 @@ interface IProfileBoxProps {
 function ProfileBox(props: IProfileBoxProps) {
     return (
         <>
-            <div className="flex space-x-5 bg-white p-4 w-full rounded-xl">
-                <div >
+            <div className="flex space-x-5 bg-white p-4 w-full rounded-xl border-2 border-[#a1060685]">
+                <div  >
                     <ProfileIcon profileIconId={props.summonerInfo.profileIconId} profileLevel={props.summonerInfo.summonerLevel} />
                 </div>
-                <div className="flex flex-col space-y-2">
-                    <div className="font-bold text-2xl">
-                        {props.summonerInfo.name}
-                    </div>
-                    {props.rankInfo.length > 0 && <TierInfoBox rankInfo={props.rankInfo} />}
+                <div className="font-bold text-2xl">
+                    <>{props.summonerInfo.name}</>
                 </div>
+
             </div>
         </>
     )

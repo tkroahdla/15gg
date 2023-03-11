@@ -4,6 +4,7 @@ import useSWR from 'swr'
 import React from "react"
 import ProfileBox from './profileBox';
 import MiniSearchBar from '@/app/miniSearchBar';
+import TierInfoBox from './tierInfoBox';
 
 export interface ISummonerData {
     accountId: string,
@@ -53,19 +54,24 @@ function Search({ params: { search } }: Props) {
     }, [summonerInfo])
 
     return (
-        <>
-            <div className="mx-auto w-full max-w-4xl space-y-3 ">
-                <div className='flex justify-end'>
-                    <MiniSearchBar />
-                </div>
-
-                {summonerInfo?.ok &&
+        <div className="mx-auto w-full max-w-4xl space-y-3 p-5">
+            <div className='flex justify-end'>
+                <MiniSearchBar />
+            </div>
+            {summonerInfo?.ok &&
+                <>
                     <ProfileBox
                         summonerInfo={summonerInfo?.profileData}
                         rankInfo={summonerInfo?.rankData} />
-                }
-            </div>
-        </>
+
+                    {(summonerInfo!.rankData?.length > 0) &&
+                        <TierInfoBox rankInfo={summonerInfo!.rankData} />}
+                </>
+            }
+
+
+        </div>
+
     )
 }
 

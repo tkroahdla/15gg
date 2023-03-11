@@ -30,13 +30,13 @@ export default function MiniSearchBar() {
 
     return (
         <div className="flex flex-col items-center">
-            <form onSubmit={handleSubmit(handleSearch)} className="flex items-center">
+            <form onSubmit={handleSubmit(handleSearch)} className="flex items-center ">
                 <input
                     type="text"
-                    className="h-8 w-32 border-0 text-xs pl-4 bg-white"
+                    className="h-8 w-36 border-0 text-xs pl-3 bg-white rounded-l-lg"
                     placeholder="소환사명"
                     {...register("search")} />
-                <button className="h-8 w-8 bg-[#cabeb3] border-0 text-xs PC:text-sm">GG</button>
+                <button className="h-8 w-8 bg-[#cabeb3] border-0 text-xs rounded-r-lg">GG</button>
             </form>
         </div>
     )
