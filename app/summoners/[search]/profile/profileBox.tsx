@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
-import { IRankData, ISummonerData } from "./page"
+import { IRankData, ISummonerData } from "../page"
 import ProfileIcon from "./profileIcon"
-import TierInfoBox from "./tierInfoBox"
+import TierBox from "../tier/tierBox"
 
 
 
@@ -21,7 +21,6 @@ function ProfileBox(props: IProfileBoxProps) {
                 <div className="font-bold text-2xl">
                     <>{props.summonerInfo.name}</>
                 </div>
-
             </div>
         </>
     )

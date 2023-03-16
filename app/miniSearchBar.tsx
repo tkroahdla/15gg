@@ -15,7 +15,6 @@ export default function MiniSearchBar() {
 
     const handleSearch = async (formData: SearchForm) => {
         if (search == "") return
-        console.log("search : ", typeof search)
 
         setSearch(formData.search)
         router.push(`/summoners/${encodeURIComponent(search)}`)

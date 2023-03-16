@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import React from "react"
-import { ISummonerData } from "./page"
 
 interface ITierIconProps {
     tier: string;
@@ -19,6 +18,7 @@ function TierIcon(props: ITierIconProps) {
                         style={{ objectFit: "contain" }}
                         className="rounded-2xl"
                         draggable="false"
+                        sizes="33vw"
                     />
                 </div>}
 

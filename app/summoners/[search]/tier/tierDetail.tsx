@@ -2,7 +2,7 @@
 
 import handleRemainder from "@/lib/handleRemainder"
 import React from "react"
-import { IRankData } from "./page"
+import { IRankData } from "../page"
 import TierIcon from "./tierIcon"
 
 interface TierDetailProps {
@@ -14,7 +14,7 @@ function TierDetail({ rankData, leagueType }: TierDetailProps) {
     const winsRate = (rankData.wins! / (rankData.wins! + rankData.losses!) * 100).toFixed(2);
     const roundDownRate = handleRemainder(Number(winsRate))
     return (
-        <div className="text-lg flex flex-col bg-white rounded-xl p-4 border-2 border-[#a1060685]">
+        <div className="h-36 text-lg flex flex-col justify-center bg-white rounded-xl p-4 border-2 border-[#a1060685]">
             <span className="text-base">{leagueType}</span>
             <div className="flex justify-start items-center space-x-5">
                 <TierIcon tier={rankData.tier!} />

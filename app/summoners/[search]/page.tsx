@@ -2,9 +2,11 @@
 
 import useSWR from 'swr'
 import React from "react"
-import ProfileBox from './profileBox';
+import ProfileBox from './profile/profileBox';
 import MiniSearchBar from '@/app/miniSearchBar';
-import TierInfoBox from './tierInfoBox';
+import TierBox from './tier/tierBox';
+import NotFound from './notFound';
+import MatchBox from './match/matchBox';
 
 export interface ISummonerData {
     accountId: string,
@@ -32,6 +34,7 @@ interface SummonerDataRes {
     ok: boolean,
     profileData: ISummonerData,
     rankData: IRankData[],
+    matchIds: string[]
 }
 
 interface Props {
@@ -43,35 +46,41 @@ interface Props {
 function Search({ params: { search } }: Props) {
 
     // const [userInfo, setUserInfo] = React.useState();
-    const fetcher = (url: string) => fetch(url).then(res => res.json())
+
 
     const decodedSearch = decodeURIComponent(search);
 
-    const { data: summonerInfo } = useSWR<SummonerDataRes>(`/api/user/${decodedSearch}`, fetcher)
+    const { data: summonerInfo, isValidating } = useSWR<SummonerDataRes>(`/api/user/${decodedSearch}`)
 
     React.useEffect(() => {
         if (summonerInfo && summonerInfo.ok) console.log(summonerInfo)
     }, [summonerInfo])
 
     return (
-        <div className="mx-auto w-full max-w-4xl space-y-3 p-5">
+        <div className="mx-auto w-auto max-w-4xl space-y-3 p-5">
             <div className='flex justify-end'>
                 <MiniSearchBar />
             </div>
-            {summonerInfo?.ok &&
+            {!isValidating &&
                 <>
-                    <ProfileBox
-                        summonerInfo={summonerInfo?.profileData}
-                        rankInfo={summonerInfo?.rankData} />
+                    {summonerInfo?.ok &&
+                        <>
+                            <ProfileBox
+                                summonerInfo={summonerInfo?.profileData}
+                                rankInfo={summonerInfo?.rankData} />
+                            <TierBox rankInfo={summonerInfo!.rankData} />
+                        </>
+                    }
+                    {!summonerInfo?.ok &&
+                        <NotFound summonerName={search} />
+                    }
+                    {summonerInfo?.matchIds && <MatchBox matchIds={summonerInfo!.matchIds} summonerName={summonerInfo?.profileData?.name}></MatchBox>}
 
-                    {(summonerInfo!.rankData?.length > 0) &&
-                        <TierInfoBox rankInfo={summonerInfo!.rankData} />}
                 </>
             }
 
 
         </div>
-
     )
 }
 

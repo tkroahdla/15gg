@@ -15,7 +15,5 @@ export default function parseRankAndTier(rankInfo: IRankData[]): {
     }
   });
 
-  console.log("rankData", rankData);
-
   return { rankData };
 }

@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import React from "react"
-import { ISummonerData } from "./page"
+
 
 interface IProfileIconProps {
     profileIconId: number;
@@ -18,6 +18,8 @@ function ProfileIcon(props: IProfileIconProps) {
                 style={{ objectFit: "contain" }}
                 className="rounded-2xl"
                 draggable="false"
+                sizes="33vw"
+                priority
             />
             <div className="absolute w-full -bottom-3 flex justify-center ">
                 <span className="w-10 text-center bg-white rounded-xl border-[#dfd6cf] border-2">{props.profileLevel}</span>
