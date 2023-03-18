@@ -19,11 +19,11 @@ function ChampionIcon(props: IChampionIconProps) {
                     className="rounded-md"
                     draggable="false"
                     sizes="33vw"
-                />}
+                />
+
+            }
         </>
     )
-
-
 }
 
 export default React.memo(ChampionIcon)

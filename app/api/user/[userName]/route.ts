@@ -32,7 +32,7 @@ async function getRecentMatches(userPuuid: string) {
   const res = fetchURL(
     BASE_URL_RECENT_MATCHES_ID,
     userPuuid,
-    "/ids?type=ranked&start=0&count=3"
+    "/ids?type=ranked&start=0&count=5"
   );
   return res;
 }
