@@ -6,6 +6,7 @@ import KdaBox from "../kdaBox"
 import { IParticipants } from "./matchDetail"
 import RuneIcon from "../runeIcon"
 import SpellIcon from "../spellIcon"
+import { cls } from "@/lib/utils"
 
 interface IMatchMyChampProps {
     myInfo: IParticipants
@@ -21,7 +22,8 @@ function MatchMyChampBox(props: IMatchMyChampProps) {
                     <div className="w-12 h-12 relative">
                         <ChampionIcon championName={props.myInfo?.championName!} />
                         <div className="absolute w-full top-8 left-4 flex justify-center align-middle items-center ">
-                            <span className="w-5 h-5 text-center text-xs bg-white rounded-3xl border-[#038eff70] border-2">{props?.myInfo?.champLevel}</span>
+                            <span className={cls("w-5 h-5 text-center text-xs bg-white rounded-3xl border-2",
+                                props?.myInfo.win ? "border-[#038eff70]" : "border-[#ff030346]")}>{props?.myInfo?.champLevel}</span>
                         </div>
                     </div>
                 </div>

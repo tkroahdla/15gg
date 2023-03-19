@@ -44,10 +44,6 @@ interface Props {
 }
 
 function Search({ params: { search } }: Props) {
-
-    // const [userInfo, setUserInfo] = React.useState();
-
-
     const decodedSearch = decodeURIComponent(search);
 
     const { data: summonerInfo, isValidating } = useSWR<SummonerDataRes>(`/api/user/${decodedSearch}`)

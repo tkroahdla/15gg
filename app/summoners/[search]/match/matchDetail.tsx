@@ -138,7 +138,7 @@ function MatchDetail(props: MatchDetailProps) {
                                     <MatchMyChampBox myInfo={myInfo} items={items} ></MatchMyChampBox>
                                 </div>
                                 {myTeam &&
-                                    <div className="flex-col justify-start grow-[1] ml-5 text-xs font-semibold space-y-1">
+                                    <div className="flex-col justify-start grow-[1] ml-5 text-xs font-semibold space-y-2">
                                         <div className="text-red-500">킬관여 {getKillParticipation(myTeam.objectives.champion.kills, myInfo.kills, myInfo.assists)}% </div>
                                         <div>제어 와드  {myInfo?.wardsPlaced}</div>
                                         <div>CS {myInfo?.totalMinionsKilled}</div>
