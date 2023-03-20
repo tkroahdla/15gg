@@ -13,7 +13,7 @@ function ChampionIcon(props: IChampionIconProps) {
             {props?.championName &&
                 <Image
                     alt="profileIcon"
-                    src={`https://ddragon.leagueoflegends.com/cdn/${process.env.NEXT_PUBLIC_LOL_VERSION}/img/champion/${props.championName}.png`}
+                    src={`/img/champion/${props.championName}.png`}
                     fill={true}
                     style={{ objectFit: "contain" }}
                     className="rounded-md"

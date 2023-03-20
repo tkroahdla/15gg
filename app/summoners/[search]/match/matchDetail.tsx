@@ -6,6 +6,7 @@ import getSummoner from "@/lib/getSummoner";
 import { cls } from "@/lib/utils";
 import React from "react";
 import useSWR from 'swr';
+import EtcBox from "../etcBox";
 
 import ParticipantBox from "../participant/participantBox";
 import MatchInfo from "./matchInfo";
@@ -13,7 +14,7 @@ import MatchMyChampBox from "./matchMyChamp"
 
 interface MatchDetailProps {
     matchId: string
-    summonerName: string
+    summonerId: string
 }
 
 interface IMatchData {
@@ -33,6 +34,7 @@ export interface IMatchInfo {
 }
 
 export interface IParticipants {
+    summonerId: string,
     kills: number,
     deaths: number,
     assists: number,
@@ -105,13 +107,13 @@ function MatchDetail(props: MatchDetailProps) {
 
     React.useEffect(() => {
         if (matchData && matchData.ok) {
-            console.log("matchData", matchData)
+            // console.log("matchData", matchData)
             const participants = matchData?.matchData?.info?.participants;
 
             let devidedTeam = divideTeam(participants)
             setTeam(devidedTeam)
 
-            let summoner = getSummoner(participants, props.summonerName)
+            let summoner = getSummoner(participants, props.summonerId)
             setMyInfo(summoner)
         }
     }, [matchData])
@@ -130,24 +132,14 @@ function MatchDetail(props: MatchDetailProps) {
             {matchData?.ok &&
                 <div
                     className={cls("flex justify-center items-center rounded-md text-sm p-2", myInfo?.win ? "bg-blue-50" : "bg-red-100")}>
-                    {myInfo && <>
-                        <MatchInfo matchInfo={matchData?.matchData?.info} myInfo={myInfo} />
-                        {items &&
-                            <>
-                                <div className="flex justify-center grow-[1] ">
-                                    <MatchMyChampBox myInfo={myInfo} items={items} ></MatchMyChampBox>
-                                </div>
-                                {myTeam &&
-                                    <div className="flex-col justify-start grow-[1] ml-5 text-xs font-semibold space-y-2">
-                                        <div className="text-red-500">킬관여 {getKillParticipation(myTeam.objectives.champion.kills, myInfo.kills, myInfo.assists)}% </div>
-                                        <div>제어 와드  {myInfo?.wardsPlaced}</div>
-                                        <div>CS {myInfo?.totalMinionsKilled}</div>
-                                    </div>
-                                }
-                            </>
-                        }
-                    </>
-                    }
+                    <MatchInfo matchInfo={matchData?.matchData?.info} myInfo={myInfo!} />
+
+
+                    <div className="flex justify-center grow-[1] ">
+                        <MatchMyChampBox myInfo={myInfo!} items={items!} ></MatchMyChampBox>
+                    </div>
+
+                    <EtcBox myInfo={myInfo} myTeam={myTeam} ></EtcBox>
 
                     <div className="flex space-x-5 grow-0">
                         <ParticipantBox team={team!} />

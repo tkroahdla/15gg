@@ -11,15 +11,15 @@ interface IRuneIconProps {
 }
 
 function RuneIcon(props: IRuneIconProps) {
-    console.log("props", props)
-    console.log(RUNETYPE[props.runeIconId].icon)
+    // console.log("props", props)
+    // console.log(RUNETYPE[props.runeIconId].icon)
 
 
     return (
         <div className="w-6 h-6 relative ">
             <Image
                 alt="profileIcon"
-                src={`https://ddragon.canisback.com/img/` + RUNETYPE[props.runeIconId].icon}
+                src={`/img/` + RUNETYPE[props.runeIconId].icon}
                 fill={true}
                 style={{ objectFit: "contain" }}
                 className="rounded-lg bg-[#363636b2]"

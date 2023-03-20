@@ -13,7 +13,7 @@ function ProfileIcon(props: IProfileIconProps) {
         <div className="w-24 h-24 relative">
             <Image
                 alt="profileIcon"
-                src={`https://ddragon.leagueoflegends.com/cdn/${process.env.NEXT_PUBLIC_LOL_VERSION}/img/profileicon/${props.profileIconId}.png`}
+                src={`/img/profileicon/${props.profileIconId}.png`}
                 fill={true}
                 style={{ objectFit: "contain" }}
                 className="rounded-2xl"

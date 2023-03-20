@@ -14,7 +14,7 @@ function SpellIcon(props: ISpellIconProps) {
 
             <Image
                 alt="profileIcon"
-                src={`https://ddragon.leagueoflegends.com/cdn/${process.env.NEXT_PUBLIC_LOL_VERSION}/img/spell/${SPELLTYPE[props.spellIconId]}.png`}
+                src={`/img/spell/${SPELLTYPE[props.spellIconId]}.png`}
                 fill={true}
                 style={{ objectFit: "contain" }}
                 className="rounded-lg"

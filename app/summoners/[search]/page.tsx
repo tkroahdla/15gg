@@ -59,23 +59,18 @@ function Search({ params: { search } }: Props) {
             </div>
             {!isValidating &&
                 <>
-                    {summonerInfo?.ok &&
-                        <>
-                            <ProfileBox
-                                summonerInfo={summonerInfo?.profileData}
-                                rankInfo={summonerInfo?.rankData} />
-                            <TierBox rankInfo={summonerInfo!.rankData} />
-                        </>
-                    }
+                    <ProfileBox
+                        summonerInfo={summonerInfo?.profileData}
+                        rankInfo={summonerInfo?.rankData} />
+                    <TierBox rankInfo={summonerInfo!.rankData} />
+
                     {!summonerInfo?.ok &&
                         <NotFound summonerName={search} />
                     }
-                    {summonerInfo?.matchIds && <MatchBox matchIds={summonerInfo!.matchIds} summonerName={summonerInfo?.profileData?.name}></MatchBox>}
 
+                    <MatchBox matchIds={summonerInfo!.matchIds} summonerId={summonerInfo!.profileData?.id} />
                 </>
             }
-
-
         </div>
     )
 }
