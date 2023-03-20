@@ -7,6 +7,7 @@ import MiniSearchBar from '@/app/miniSearchBar';
 import TierBox from './tier/tierBox';
 import NotFound from './notFound';
 import MatchBox from './match/matchBox';
+import Head from 'next/head';
 
 export interface ISummonerData {
     accountId: string,
@@ -53,25 +54,27 @@ function Search({ params: { search } }: Props) {
     }, [summonerInfo])
 
     return (
-        <div className="mx-auto w-auto max-w-4xl space-y-3 p-5">
-            <div className='flex justify-end'>
-                <MiniSearchBar />
+        <>
+            <div className="mx-auto w-auto max-w-4xl space-y-3 p-5">
+                <div className='flex justify-end'>
+                    <MiniSearchBar />
+                </div>
+                {!isValidating &&
+                    <>
+                        <ProfileBox
+                            summonerInfo={summonerInfo?.profileData}
+                            rankInfo={summonerInfo?.rankData} />
+                        <TierBox rankInfo={summonerInfo!.rankData} />
+
+                        {!summonerInfo?.ok &&
+                            <NotFound summonerName={search} />
+                        }
+
+                        <MatchBox matchIds={summonerInfo!.matchIds} summonerId={summonerInfo!.profileData?.id} />
+                    </>
+                }
             </div>
-            {!isValidating &&
-                <>
-                    <ProfileBox
-                        summonerInfo={summonerInfo?.profileData}
-                        rankInfo={summonerInfo?.rankData} />
-                    <TierBox rankInfo={summonerInfo!.rankData} />
-
-                    {!summonerInfo?.ok &&
-                        <NotFound summonerName={search} />
-                    }
-
-                    <MatchBox matchIds={summonerInfo!.matchIds} summonerId={summonerInfo!.profileData?.id} />
-                </>
-            }
-        </div>
+        </>
     )
 }
 
