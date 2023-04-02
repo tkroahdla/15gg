@@ -14,7 +14,8 @@ function ItemIcon(props: IItemIconProps) {
                 <div className="flex relative w-8 h-8">
                     <Image
                         alt="profileIcon"
-                        src={`/img/item/${props.itemNumber}.png`}
+                        src={`https://ddragon.leagueoflegends.com/cdn/${process.env.NEXT_PUBLIC_LOL_VERSION}/img/item/${props.itemNumber}.png`}
+                        // src={`/img/item/${props.itemNumber}.png`}
                         fill={true}
                         style={{ objectFit: "contain" }}
                         className="rounded-md"
