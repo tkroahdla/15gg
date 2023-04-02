@@ -39,10 +39,11 @@ async function getRecentMatches(userPuuid: string) {
 }
 
 export async function GET(request: any, { params }: any) {
-  const userName = params.userName;
+  const summonerName = params.summonerName;
 
   try {
-    const profileData: ISummonerData = await getUserProfile(userName);
+    const profileData: ISummonerData = await getUserProfile(summonerName);
+
     if (profileData.name) {
       const rankData = await getUserRank(profileData.id);
       const matchData = await getRecentMatches(profileData.puuid);

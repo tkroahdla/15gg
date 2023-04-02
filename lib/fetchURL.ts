@@ -14,6 +14,7 @@ export default async function fetchURL(
       },
     })
   ).json();
+  console.log("url + param + plusUrl", url + param + plusUrl);
 
   return res;
 }
