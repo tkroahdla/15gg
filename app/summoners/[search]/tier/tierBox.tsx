@@ -23,12 +23,12 @@ function TierBox(props: ITierIconProps) {
     return (
         <>
             {data &&
-                <div className="flex space-x-3 ">
-                    <div className="w-[50%] h-full">
+                <div className="flex justify-between">
+                    <div className="w-[49%] h-full">
                         <TierDetail leagueType={"솔로랭크 5x5"} rankData={data[0]} />
                     </div>
 
-                    <div className="w-[50%] h-full">
+                    <div className="w-[49%] h-full">
                         <TierDetail leagueType={"자유랭크 5x5"} rankData={data[1]} />
                     </div>
                 </div>}

@@ -1,5 +1,6 @@
 "use client"
 
+import { cls } from "@/lib/utils"
 import { useRouter } from "next/navigation"
 import React from "react"
 import ChampionIcon from "../championIcon"
@@ -25,7 +26,7 @@ function ParticipantDetail(props: ParticipantDetailProps) {
                             <ChampionIcon championName={participant?.championName} />
                         </div>
                     </div>
-                    <span className="ellipsis hover:underline cursor-pointer" onClick={() => handleSummonerNameClick(participant?.summonerName)}>{participant?.summonerName}</span>
+                    <span className={cls("ellipsis hover:underline cursor-pointer")} onClick={() => handleSummonerNameClick(participant?.summonerName)}>{participant?.summonerName}</span>
                     <div>
                     </div>
                 </div>

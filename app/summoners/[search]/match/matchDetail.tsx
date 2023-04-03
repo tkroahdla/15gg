@@ -131,18 +131,29 @@ function MatchDetail(props: MatchDetailProps) {
         <>
             {matchData?.ok &&
                 <div
-                    className={cls("flex justify-center items-center rounded-md text-sm p-2", myInfo?.win ? "bg-blue-50" : "bg-red-100")}>
-                    <MatchInfo matchInfo={matchData?.matchData?.info} myInfo={myInfo!} />
+                    className={cls("flex justify-center items-center rounded-md text-sm p-2 ", myInfo?.win ? "bg-blue-50" : "bg-red-100",
+                        " phone35:flex-col",
+                        " sm:flex-row",
+                    )}>
 
-
-                    <div className="flex justify-center grow-[1] ">
+                    <div className={cls("flex justify-center grow-[1] items-center sm:flex-row",
+                        "phone35:flex-col phone35:w-[63] phone35:mb-3",
+                        "sm:justify-around ",
+                    )}>
+                        <MatchInfo matchInfo={matchData?.matchData?.info} myInfo={myInfo!} />
                         <MatchMyChampBox myInfo={myInfo!} items={items!} ></MatchMyChampBox>
                     </div>
 
-                    <EtcBox myInfo={myInfo} myTeam={myTeam} ></EtcBox>
+                    <div className="flex">
+                        <div className={cls("phone35:hidden", "phone39:hidden", "phone41:hidden", "sm:hidden", "md:block")}>
+                            <EtcBox myInfo={myInfo} myTeam={myTeam} ></EtcBox>
+                        </div>
 
-                    <div className="flex space-x-5 grow-0">
-                        <ParticipantBox team={team!} />
+                        <div className={cls("flex space-x-5 grow-0",
+                            "phone35:space-x-8 phone35:justify-start",
+                        )}>
+                            <ParticipantBox team={team!} />
+                        </div>
                     </div>
                 </div>
             }
