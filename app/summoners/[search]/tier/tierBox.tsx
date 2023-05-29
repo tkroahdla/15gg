@@ -13,6 +13,7 @@ function TierBox(props: ITierIconProps) {
     const [data, setData] = React.useState<IRankData[]>()
 
     React.useEffect(() => {
+        console.log("rankInfo", props.rankInfo)
         if (props.rankInfo) {
             const { rankData } = parseRankAndTier(props.rankInfo)
             setData(rankData)

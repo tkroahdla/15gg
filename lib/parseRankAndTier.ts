@@ -4,6 +4,7 @@ export default function parseRankAndTier(rankInfo: IRankData[]): {
   rankData: IRankData[];
 } {
   let rankData: IRankData[] = [{ tier: "UNRANKED" }, { tier: "UNRANKED" }];
+  console.log("rankInfo", rankInfo);
   rankInfo.forEach((rankInfo) => {
     if (
       rankInfo?.queueType === "RANKED_SOLO_5x5" ||

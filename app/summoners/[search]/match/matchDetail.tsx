@@ -138,7 +138,7 @@ function MatchDetail(props: MatchDetailProps) {
 
                     <div className={cls("flex justify-center grow-[1] items-center sm:flex-row",
                         "phone35:flex-col phone35:w-[63] phone35:mb-3",
-                        "sm:justify-around ",
+                        "sm:justify-around sm:mb-0",
                     )}>
                         <MatchInfo matchInfo={matchData?.matchData?.info} myInfo={myInfo!} />
                         <MatchMyChampBox myInfo={myInfo!} items={items!} ></MatchMyChampBox>

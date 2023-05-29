@@ -14,7 +14,7 @@ interface MatchBoxProps {
 
 function MatchInfo(props: MatchBoxProps) {
     return (
-        <div className={cls("flex flex-col items-center justify-center p-2",
+        <div className={cls("flex flex-col items-center justify-center p-1 -mx-3",
             "phone35:flex-row phone35:space-x-3 phone35:justify-start",
             "sm:flex-col sm:w-24"
         )}>
