@@ -110,6 +110,10 @@ function MatchDetail(props: MatchDetailProps) {
             // console.log("matchData", matchData)
             const participants = matchData?.matchData?.info?.participants;
 
+            console.log("participants : ", participants)
+
+            if (participants == undefined) return
+
             let devidedTeam = divideTeam(participants)
             setTeam(devidedTeam)
 
@@ -143,6 +147,7 @@ function MatchDetail(props: MatchDetailProps) {
                         <MatchInfo matchInfo={matchData?.matchData?.info} myInfo={myInfo!} />
                         <MatchMyChampBox myInfo={myInfo!} items={items!} ></MatchMyChampBox>
                     </div>
+                    {!!!team && <div>게임 정보를 로드할 수 없습니다.</div>}
 
                     <div className="flex">
                         <div className={cls("phone35:hidden", "phone39:hidden", "phone41:hidden", "sm:hidden", "md:block")}>
