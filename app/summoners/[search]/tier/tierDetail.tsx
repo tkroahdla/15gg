@@ -14,32 +14,39 @@ function TierDetail({ rankData, leagueType }: TierDetailProps) {
     const winsRate = (rankData.wins! / (rankData.wins! + rankData.losses!) * 100).toFixed(2);
     const roundDownRate = handleRemainder(Number(winsRate))
     return (
-        <div className="text-xs sm:text-sm md:text-lg lg:text-lg h-36 flex flex-col justify-center bg-white rounded-xl p-4 border-2 border-[#a1060685]">
-            <span className="text-base">{leagueType}</span>
-            <div className="flex justify-start items-center space-x-5">
-                <TierIcon tier={rankData.tier!} />
-                <div className="flex flex-col">
-                    <span>{rankData.tier} {rankData.rank} </span>
-                    {rankData.tier != "UNRANKED" &&
-                        <div className="flex space-x-3">
-                            {typeof rankData.leaguePoints == "number" && <span>{rankData?.leaguePoints}LP</span>}
-                        </div>
-                    }
-                    {rankData.tier != "UNRANKED" &&
-                        <>
-                            <div className="space-x-1">
-                                {/* <span>{rankData.wins! + rankData.losses!}전</span> */}
-                                <span>{rankData.wins}승</span>
-                                <span>{rankData.losses}패</span>
+        <>
 
+            <div className="flex-col justify-start items-center w-full rounded-full mb-3">
+                <span className="text-base">{leagueType}</span>
+                <div className="bg-[#fa6a6a] h-0.5 rounded-full w-full"></div>
+            </div>
+
+            <div className="text-xs sm:text-sm md:text-lg lg:text-lg h-40 flex flex-col justify-center bg-white rounded-xl p-4 border-2 border-[#a1060685]">
+                <div className="flex justify-start items-center space-x-5">
+                    <TierIcon tier={rankData.tier!} />
+                    <div className="flex flex-col">
+                        <span>{rankData.tier} {rankData.rank} </span>
+                        {rankData.tier != "UNRANKED" &&
+                            <div className="flex space-x-3">
+                                {typeof rankData.leaguePoints == "number" && <span>{rankData?.leaguePoints}LP</span>}
                             </div>
-                            <span>{roundDownRate}%</span>
-                        </>
-                    }
+                        }
+                        {rankData.tier != "UNRANKED" &&
+                            <>
+                                <div className="space-x-1">
+                                    {/* <span>{rankData.wins! + rankData.losses!}전</span> */}
+                                    <span>{rankData.wins}승</span>
+                                    <span>{rankData.losses}패</span>
 
+                                </div>
+                                <span>{roundDownRate}%</span>
+                            </>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
 
